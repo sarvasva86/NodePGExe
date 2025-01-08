@@ -33,7 +33,10 @@ app.use((err, req, res, next) => {
 });
 
 // routes/industries.js
-const industriesRouter = require('express').Router();
+
+const industriesRouter = require('./routes/industries');
+app.use('/industries', industriesRouter);
+
 
 // GET /industries: List all industries
 industriesRouter.get('/', async (req, res, next) => {
