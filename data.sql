@@ -14,6 +14,18 @@ CREATE TABLE invoices (
   paid_date DATE
 );
 
+CREATE TABLE industries (
+  code TEXT PRIMARY KEY,
+  industry TEXT NOT NULL
+);
+
+CREATE TABLE company_industries (
+  industry_code TEXT REFERENCES industries(code) ON DELETE CASCADE,
+  company_code TEXT REFERENCES companies(code) ON DELETE CASCADE,
+  PRIMARY KEY (industry_code, company_code)
+);
+
+
 -- Insert initial data
 INSERT INTO companies (code, name, description) VALUES
 ('apple', 'Apple', 'Maker of iPhones'),
